@@ -1,10 +1,10 @@
+import sys
 import Classes as cls
 import json
 base = cls.base
 
-#-Functions section{
-
 isEdited = False
+#-Functions section{
 #-Testing_Function
 def testing(email) -> bool:
     for key, value in base.items():
@@ -31,7 +31,7 @@ def remove_users(email):
 #-ShowUsers_Function
 def show_users():
     users = ''
-    for key, value in data.items():
+    for key, value in base.items():
         users += f"""                                            +------------------------------------------------------------|
                                             |{key}:                                            |           
                                             |    +-------------------------------------------------------|
