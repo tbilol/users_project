@@ -14,6 +14,40 @@ def testing(email):
             break
     return (isHas, val)
 
+def create_user():
+    name = input("Enter your name: ")
+    email = input("Enter your email address: ")
+    answer = testing(email)[0]
+    if answer:
+        print(" This email address already exists.")
+    else:
+        global isEdited
+        isEdited = True
+        password = input("Enter your password: ")
+        new_user = cls.User(name=name, email=email, password=password)
+        new_user.add_db()
+        print("Your created successfully.")
+
+
+#---------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#---------------
+
 
 def remove_users():
     email = input("Enter your email address: ").strip()
@@ -71,7 +105,8 @@ def menu():
 0. Exit""")
     command = input(">>> ")
     if command == '1':
-        pass
+        create_user()
+        menu()
     elif command == '2':
         remove_users()
         menu()
