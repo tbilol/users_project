@@ -51,5 +51,3 @@ def save():
     with open('./front/data.json', 'w') as outfile:
         outfile.write(json.dumps([base], indent=4))
 #-Save_Function
-
-print("asdfa")
