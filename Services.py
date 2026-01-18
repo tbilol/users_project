@@ -28,40 +28,16 @@ def create_user():
         new_user.add_db()
         print("Your created seccess.")
 
-
-#---------
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-#---------------
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+def remove_users():
+    email = input("Enter your email address: ").strip()
+    answer, key = testing(email)
+    if answer:
+        global isEdited
+        isEdited = True
+        del base[key]
+        print(f" User has been removed successfully.")
+    else:
+        print(" Email not found")
 
 def edit_users():
     email = input("Enter your email address: ").strip()
@@ -76,18 +52,6 @@ def edit_users():
                      'email': new_email,
                      'password': new_password}
         print(" User has been edited successfully.")
-    else:
-        print(" Email not found")
-
-
-def remove_users():
-    email = input("Enter your email address: ").strip()
-    answer, key = testing(email)
-    if answer:
-        global isEdited
-        isEdited = True
-        del base[key]
-        print(f" User has been removed successfully.")
     else:
         print(" Email not found")
 
@@ -106,6 +70,7 @@ def show_users():
     return users
 
 def save():
+    global isEdited
     isEdited = False
     with open('./front/data.json', 'w') as outfile:
         outfile.write(json.dumps([base], indent=4))
