@@ -2,38 +2,34 @@ import sys
 import Classes as cls
 import json
 base = cls.base
-
 isEdited = False
-#-Functions section{
-#-Testing_Function
-def testing(email) -> bool:
+
+def testing(email):
+    val = ""
+    isHas = False
     for key, value in base.items():
         if value['email'] == email:
-            return False
-        else:
-            return True
-#-Testing_Function
+            val = key
+            isHas = True
+            break
+    return (isHas, val)
 
-#-Remove-Function
 
 def remove_users():
-    email = input("Enter your email address: ")
+    email = input("Enter your email address: ").strip()
+    answer, key = testing(email)
+    if answer:
+        global isEdited
+        isEdited = True
+        del base[key]
+        print(f" User has been removed successfully.")
+    else:
+        print(" Email not found")
+
+def show_users():
+    users = ''
     for key, value in base.items():
-        if testing(email):
-            del base[key]
-            isEdited = True
-            print(f"{value['name']} has been removed successfully.")
-        else:
-            print(" Email not found")
-
-#-Remove-Function
-
-#-ShowUsers_Function
-def show_users(email):
-    def show_user():
-        users = ''
-        for key, value in base.items():
-            users += f"""                                            +------------------------------------------------------------|
+        users += f"""                                                +------------------------------------------------------------|
                                                 |{key}:                                            |           
                                                 |    +-------------------------------------------------------|
                                                 |    |user_name     | {value['name']}             
@@ -42,18 +38,16 @@ def show_users(email):
                                                 |    +-------------------------------------------------------|
                                                 |                                                            |
                                                 +------------------------------------------------------------|\n"""
-        return users
-#-ShowUsers_Function
+    return users
 
-#-Save_Function
 def save():
+    isEdited = False
     with open('./front/data.json', 'w') as outfile:
         outfile.write(json.dumps([base], indent=4))
-#-Save_Function
+        print("Data saved successfully.")
 
-#-check function
 def check():
-    if isEdited:
+    if isEdited == True:
         print(""" You made a change and didn't save it. Are you sure you want to exit?
 1. Yes
 2. No""")
@@ -67,13 +61,13 @@ def check():
             print("Please enter a valid option.")
             check()
 
-#-menu function
 def menu():
     print("""
 1. Create user
 2. Remove user
 3. Edit user
-4. Save all
+4. Show users
+5. Save all
 0. Exit""")
     command = input(">>> ")
     if command == '1':
@@ -84,12 +78,13 @@ def menu():
     elif command == '3':
         pass
     elif command == '4':
-        pass
+        print(show_users())
+        menu()
+    elif command ==  '5':
+        save()
+        menu()
     elif command == '0':
         check()
     else:
         print("Invalid option. Try again.")
         menu()
-
-
-
