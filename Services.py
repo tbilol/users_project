@@ -4,7 +4,7 @@ base = cls.base
 
 #-Functions section{
 
-
+isEdited = False
 #-Testing_Function
 def testing(email) -> bool:
     for key, value in base.items():
@@ -21,7 +21,7 @@ def remove_users(email):
     for key, value in base.items():
         if testing(email):
             del base[key]
-
+            isEdited = False
             return f"{value['name']} has been removed successfully."
 
 
@@ -29,20 +29,20 @@ def remove_users(email):
 
 
 #-ShowUsers_Function
-def show_users(email):
-    def show_user():
-        users = ''
-        for key, value in base.items():
-            users += f"""                                            +------------------------------------------------------------|
-                                                |{key}:                                            |           
-                                                |    +-------------------------------------------------------|
-                                                |    |user_name     | {value['name']}             
-                                                |    |user_email    | {value['email']}           
-                                                |    |user_password | {value['password']}   
-                                                |    +-------------------------------------------------------|
-                                                |                                                            |
-                                                +------------------------------------------------------------|\n"""
-        return users
+def show_users():
+    users = ''
+    for key, value in data.items():
+        users += f"""                                            +------------------------------------------------------------|
+                                            |{key}:                                            |           
+                                            |    +-------------------------------------------------------|
+                                            |    |user_name     | {value['name']}             
+                                            |    |user_email    | {value['email']}           
+                                            |    |user_password | {value['password']}   
+                                            |    +-------------------------------------------------------|
+                                            |                                                            |
+                                            +------------------------------------------------------------|\n"""
+    return users
+
 #-ShowUsers_Function
 
 
@@ -50,5 +50,5 @@ def show_users(email):
 def save():
     with open('./front/data.json', 'w') as outfile:
         outfile.write(json.dumps([base], indent=4))
-# -Save_Function
+#-Save_Function
 
