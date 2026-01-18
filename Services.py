@@ -1,14 +1,10 @@
-import email
 import sys
-
 import Classes as cls
 import json
 base = cls.base
 
 isEdited = False
 #-Functions section{
-
-
 #-Testing_Function
 def testing(email) -> bool:
     for key, value in base.items():
@@ -17,7 +13,6 @@ def testing(email) -> bool:
         else:
             return True
 #-Testing_Function
-
 
 #-Remove-Function
 
@@ -31,12 +26,7 @@ def remove_users():
         else:
             print(" Email not found")
 
-
-
-
 #-Remove-Function
-
-
 
 #-ShowUsers_Function
 def show_users(email):
@@ -55,15 +45,13 @@ def show_users(email):
         return users
 #-ShowUsers_Function
 
-
 #-Save_Function
 def save():
     with open('./front/data.json', 'w') as outfile:
         outfile.write(json.dumps([base], indent=4))
-# -Save_Function
+#-Save_Function
 
-
-
+#-check function
 def check():
     if isEdited:
         print(""" You made a change and didn't save it. Are you sure you want to exit?
@@ -79,7 +67,7 @@ def check():
             print("Please enter a valid option.")
             check()
 
-
+#-menu function
 def menu():
     print("""
 1. Create user
