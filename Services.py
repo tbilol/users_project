@@ -26,7 +26,7 @@ def create_user():
         password = input("Enter your password: ")
         new_user = cls.User(name=name, email=email, password=password)
         new_user.add_db()
-        print("Your created successfully.")
+        print("Your created seccess.")
 
 
 #---------
