@@ -21,13 +21,17 @@ def testing(email) -> bool:
 
 #-Remove-Function
 
-def remove_users(email):
+def remove_users():
     email = input("Enter your email address: ")
-    isEdited = True
     for key, value in base.items():
         if testing(email):
             del base[key]
-            return f"{value['name']} has been removed successfully."
+            isEdited = True
+            print(f"{value['name']} has been removed successfully.")
+        else:
+            print(" Email not found")
+
+
 
 
 #-Remove-Function
