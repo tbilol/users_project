@@ -1,0 +1,34 @@
+[
+    {
+        "user - #ssh1544": {
+            "name": "ali",
+            "email": "alialiyev@gmail.com",
+            "password": "root123"
+        },
+        "user - #cdh3434": {
+            "name": "vali",
+            "email": "valivaliyev@gmail.com",
+            "password": "root123"
+        },
+        "user - #dgh8434": {
+            "name": "abror",
+            "email": "abror1222@gmail.com",
+            "password": "client123"
+        },
+        "user - #rth3514": {
+            "name": "axror",
+            "email": "axror@gmail.com",
+            "password": "host1122"
+        },
+        "user - #fgt8789": {
+            "name": "Iskandar",
+            "email": "iskandar_buyuk@gmail.com",
+            "password": "gladio0000"
+        },
+        "user - #bd75bbc": {
+            "name": "Alex",
+            "email": "alexfit@gmail.com",
+            "password": "alex5454"
+        }
+    }
+]
