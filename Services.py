@@ -21,7 +21,8 @@ def testing(email) -> bool:
 
 #-Remove-Function
 
-def remove_users():
+def remove_users(email):
+    email = input("Enter your email address: ")
     isEdited = True
     for key, value in base.items():
         if testing(email):
