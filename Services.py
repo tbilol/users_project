@@ -21,6 +21,7 @@ def remove_users(email):
     for key, value in base.items():
         if testing(email):
             del base[key]
+
             return f"{value['name']} has been removed successfully."
 
 
