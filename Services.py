@@ -15,6 +15,37 @@ def testing(email):
     return (isHas, val)
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+def edit_users():
+    email = input("Enter your email address: ").strip()
+    answer, key = testing(email)
+    if answer:
+        global isEdited
+        isEdited = True
+        new_name = input("Enter your new - name: ").strip()
+        new_email = input("Enter your new - email address: ").strip()
+        new_password = input("Enter your new - password: ").strip()
+        base[key] = {'name': new_name,
+                     'email': new_email,
+                     'password': new_password}
+        print(" User has been edited successfully.")
+    else:
+        print(" Email not found")
+
+
 def remove_users():
     email = input("Enter your email address: ").strip()
     answer, key = testing(email)
