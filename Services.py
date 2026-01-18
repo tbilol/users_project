@@ -2,10 +2,12 @@ import email
 import sys
 
 import Classes as cls
+import json
 base = cls.base
 
 isEdited = False
 #-Functions section{
+
 
 #-Testing_Function
 def testing(email) -> bool:
@@ -14,19 +16,46 @@ def testing(email) -> bool:
             return False
         else:
             return True
-    return None
-
-
 #-Testing_Function
 
+
 #-Remove-Function
+
 def remove_users():
     isEdited = True
     for key, value in base.items():
-        if value['email'] == email:
+        if testing(email):
             del base[key]
+            return f"{value['name']} has been removed successfully."
+
+
 #-Remove-Function
 
+
+
+#-ShowUsers_Function
+def show_users(email):
+    def show_user():
+        users = ''
+        for key, value in base.items():
+            users += f"""                                            +------------------------------------------------------------|
+                                                |{key}:                                            |           
+                                                |    +-------------------------------------------------------|
+                                                |    |user_name     | {value['name']}             
+                                                |    |user_email    | {value['email']}           
+                                                |    |user_password | {value['password']}   
+                                                |    +-------------------------------------------------------|
+                                                |                                                            |
+                                                +------------------------------------------------------------|\n"""
+        return users
+#-ShowUsers_Function
+
+
+#-Save_Function
+def save():
+    with open('./front/data.json', 'w') as outfile:
+        outfile.write(json.dumps([base], indent=4))
+# -Save_Function
 
 
 
@@ -68,5 +97,6 @@ def menu():
     else:
         print("Invalid option. Try again.")
         menu()
+
 
 
